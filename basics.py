@@ -2,6 +2,8 @@ try:
     import torch
     import torchvision
     import numpy as np
+    from torch import nn
+    import torch.nn.functional as F
     print ("loaded modules")
     print ("torch version:", torch.__version__)
     print ("torchivision version:", torchvision.__version__)
@@ -121,6 +123,29 @@ def under_bar_function():
     nums.zero_() # set zero to all elements
     print (nums)
 
-under_bar_function()
+# under_bar_function()
 
+def run_activation_f():
+    x = torch.Tensor(([-2, 999, 0, 0.3, 1]))
+    print (x)
+
+    print ('relu:', F.relu(x))
+    print ('softmax:', F.softmax(x, dim=0)) #dim : dimension
+    print ('sigmoid:', torch.sigmoid(x))
+
+# run_activation_f()
+
+def run_loss_f():
+    # model output : sum = 1
+    x = torch.tensor([[0.2, 0.1, 0.7]])
+
+    # MSE label for answer : one-hot vector
+    ans_mse = torch.tensor([[0, 1, 0]])
+    print ('MCE:', nn.MSELoss(reduction='mean')(x, ans_mse))
+
+    # cross entropy label for answer : scalar
+    ans_cel = torch.tensor([1])
+    print ('CrossEntropy:', nn.CrossEntropyLoss()(x, ans_cel))
+
+run_loss_f()
 

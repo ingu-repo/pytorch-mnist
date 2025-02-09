@@ -2,16 +2,25 @@
 入力層やハイパーパラメータ、損失関数などの学習手順さえ教えてあげれば、
 勝手に学習してくれるのがDLの素晴らしいところ。
 
-# Virtual Env
-Creating virtual env as a name of venv
+## Development Environment
+### Virtual Env
+Creating Python virtual env as a name of venv
 ```shell
+cd ..
 python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
+pip3 freeze > requirements.txt
 ```
 
-# PyTorch
-### Summary
+### Runtime Env
+Set runtime env under a specific virtual env
+```shell
+source ../venv/bin/activate
+```
+
+## PyTorch
+Facebook製<br>
 逆伝播をするための勾配を値を計算してくれる
 
 ### Numpy vs PyTorch
@@ -68,7 +77,6 @@ $$
 
 # Apendix
 
-
 ## 学習率 (Learning Rate)
 一回の更新でどれくらいパラメータを変化させるのかを決める
 
@@ -92,8 +100,6 @@ Adamが代表的な手法。
 * slow to learn
 * but easy to know 中間層 and easy to debug
 * model can be fixed easily whereas define-and-run is difficult
-
-
 
 ## 単回帰分析 : 直線の傾き
 $
